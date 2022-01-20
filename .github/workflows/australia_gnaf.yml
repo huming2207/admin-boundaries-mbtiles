@@ -48,8 +48,12 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: ausgnaf-sqlite
-        path: gnaf.*.sqlite.gz
-          
+        path: gnaf.*.sqlite.gz      
+    - name: Archive street number CSV as artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: streetnumber-csv
+        path: housenumber.*.csv.gz      
   mbtiles:
     runs-on: ubuntu-latest
     container: klokantech/tippecanoe
