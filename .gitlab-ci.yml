@@ -12,6 +12,7 @@ prep:
       - "data.zip"
       - bin/
       - G-NAF/
+      - tmp/
 
   variables:
     GIT_CHECKOUT: "true"
@@ -28,7 +29,7 @@ prep:
     - ls -lh
     - ./bin/gnafall
     - ls -lh
-    - rm -rf G-NAF data.zip
+    - rm -rf G-NAF data.zip tmp
 
 mbtiles:
   stage: mbtiles
