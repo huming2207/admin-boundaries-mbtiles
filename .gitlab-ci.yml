@@ -39,21 +39,7 @@ gnaf:
     - ./bin/generate_mbtiles_gnaf VIC
     - ./bin/generate_mbtiles_gnaf SA
     - ./bin/generate_mbtiles_gnaf WA
-    
-mbtiles:
-  stage: mbtiles
-  image: klokantech/tippecanoe
-  variables:
-    GIT_CHECKOUT: "true"
-  artifacts:
-    paths:
-      - "*.gz"
-      - "*/*.gz"
-      - "*/**/*.gz"
-  dependencies: 
-    - gnaf
-  script:
-
+  
 
 # release_tiles:
 #   stage: release
