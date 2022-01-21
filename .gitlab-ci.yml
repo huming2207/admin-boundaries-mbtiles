@@ -36,6 +36,11 @@ mbtiles:
   image: klokantech/tippecanoe
   artifacts:
     untracked: true
+    exclude:
+      - "data.zip"
+      - bin/
+      - G-NAF/
+      - tmp/
   dependencies: 
     - prep
   script:
