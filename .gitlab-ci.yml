@@ -11,7 +11,8 @@ prep:
     exclude:
       - "data.zip"
       - bin/
-      
+      - G-NAF/
+
   variables:
     GIT_CHECKOUT: "true"
   script:
@@ -27,6 +28,7 @@ prep:
     - ls -lh
     - ./bin/gnafall
     - ls -lh
+    - rm -rf G-NAF data.zip
 
 mbtiles:
   stage: mbtiles
