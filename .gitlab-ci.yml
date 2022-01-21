@@ -36,9 +36,8 @@ mbtiles:
     GIT_CHECKOUT: "true"
   artifacts:
     paths:
-      - "*.gz"
-      - "*/*.gz"
-      - "*/**/*.gz"
+      - "*.mbtiles.gz"
+      
   dependencies: 
     - gnaf
   script:
