@@ -9,8 +9,8 @@ prep:
   artifacts:
     paths:
       - "*.gz"
-      - */*.gz
-      - */**/*.gz
+      - "*/*.gz"
+      - "*/**/*.gz"
 
   variables:
     GIT_CHECKOUT: "true"
@@ -39,8 +39,8 @@ mbtiles:
   artifacts:
     paths:
       - "*.gz"
-      - */*.gz
-      - */**/*.gz
+      - "*/*.gz"
+      - "*/**/*.gz"
   dependencies: 
     - prep
   script:
