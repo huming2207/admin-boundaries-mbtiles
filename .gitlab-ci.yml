@@ -1,12 +1,11 @@
 stages:
-  - gnaf:prep
+  - prep
   - gnaf:mbtile
-  - osm
   - merge
   # - release
 
 gnaf:prep:
-  stage: gnaf:prep
+  stage: prep
   image: osgeo/gdal:alpine-small-latest
   artifacts:
     paths:
@@ -53,6 +52,25 @@ gnaf:mbtile:
     - ./bin/generate_mbtiles_gnaf VIC
     - ./bin/generate_mbtiles_gnaf SA
     - ./bin/generate_mbtiles_gnaf WA
+
+osm:prep:
+  stage: prep
+  image: ubuntu-20.04
+  artifacts:
+    paths:
+      - "*.mbtiles.gz"
+  script:
+    - apt-get update
+    - apt-get install -y git build-essential liblua5.1-0 liblua5.1-0-dev libprotobuf-dev libsqlite3-dev protobuf-compiler shapelib libshp-dev libboost-all-dev aria2
+    - aria2c -x16 -s100 --continue=true --auto-file-renaming=false https://download.geofabrik.de/australia-oceania/australia-latest.osm.pbf
+    - aria2c -x16 -s100 --continue=true --auto-file-renaming=false https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
+    - unzip water-polygons-split-4326.zip
+    - mv water-polygons-split-4326 coastline
+    - git clone https://github.com/systemed/tilemaker
+    - cd tilemaker && make -j32 && make install && cd ..
+    - tilemaker --input australia-latest.osm.pbf --output osm.mbtiles --config /tilemaker-config.json --process /process-openmaptiles.lua
+
+
 
 # release_tiles:
 #   stage: release
