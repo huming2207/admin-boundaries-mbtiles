@@ -100,7 +100,7 @@ jobs:
         uses: Wandalen/wretry.action@v1.0.11
         with: 
           action: softprops/action-gh-release@v1
-          with:
+          with: |
             files: |
               gnaf.ACT.geojson.gz
               gnaf.NT.geojson.gz
