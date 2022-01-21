@@ -1,11 +1,12 @@
 stages:
-  - gnaf
+  - gnaf:prep
+  - gnaf:mbtile
   - osm
   - merge
   # - release
 
-gnaf:
-  stage: gnaf
+gnaf:prep:
+  stage: gnaf:prep
   image: osgeo/gdal:alpine-small-latest
   artifacts:
     paths:
@@ -29,8 +30,8 @@ gnaf:
     - rm -rf G-NAF data.zip tmp
     - ls -lh
     
-mbtiles:
-  stage: mbtiles
+gnaf:mbtile:
+  stage: gnaf:mbtile
   image: klokantech/tippecanoe
   variables:
     GIT_CHECKOUT: "true"
@@ -39,7 +40,7 @@ mbtiles:
       - "*.mbtiles.gz"
       
   dependencies: 
-    - gnaf
+    - gnaf:prep
   script:
     - echo "Now packing MBTiles"
     - ls -lah
