@@ -127,6 +127,15 @@ jobs:
             gnaf.VIC.mbtiles.gz
             gnaf.SA.mbtiles.gz
             gnaf.WA.mbtiles.gz
+            housenumber.ACT.mbtiles.gz
+            housenumber.NT.mbtiles.gz
+            housenumber.TAS.mbtiles.gz
+            housenumber.OT.mbtiles.gz
+            housenumber.NSW.mbtiles.gz
+            housenumber.QLD.mbtiles.gz
+            housenumber.VIC.mbtiles.gz
+            housenumber.SA.mbtiles.gz
+            housenumber.WA.mbtiles.gz
           tag_name: ${{github.event.inputs.tag}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
