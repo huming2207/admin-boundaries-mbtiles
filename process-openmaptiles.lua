@@ -35,7 +35,7 @@ aerodromeValues = Set { "international", "public", "regional", "military", "priv
 
 -- Process node tags
 
-node_keys = { "amenity", "shop", "sport", "tourism", "place", "office", "natural", "addr:housenumber", "aeroway" }
+node_keys = { "amenity", "shop", "sport", "tourism", "place", "office", "natural", "aeroway" }
 function node_function(node)
 	-- Write 'aerodrome_label'
 	local aeroway = node:Find("aeroway")
@@ -50,18 +50,6 @@ function node_function(node)
 		local class
 		if aerodromeValues[aerodrome_value] then class = aerodrome_value else class = "other" end
 		node:Attribute("class", class)
-	end
-	-- Write 'housenumber'
-	local housenumber = node:Find("addr:housenumber")
-	if housenumber~="" then
-		node:Layer("housenumber", false)
-		node:Attribute("housenumber", housenumber)
-	end
-
-	local custom_housenumber = node:Find("housenumbe")
-	if custom_housenumber~="" then
-		node:Layer("housenumber", false)
-		node:Attribute("housenumber", custom_housenumber)
 	end
 
 	-- Write 'place'
@@ -414,18 +402,6 @@ function way_function(way)
 		way:Layer("building", true)
 		SetBuildingHeightAttributes(way)
 		SetMinZoomByArea(way)
-	end
-
-	local custom_housenumber = way:Find("housenumbe")
-	if custom_housenumber~="" then
-		way:Layer("housenumber", false)
-		way:Attribute("housenumber", custom_housenumber)
-	end
-
-	-- Set 'housenumber'
-	if housenumber~="" then
-		way:LayerAsCentroid("housenumber", false)
-		way:Attribute("housenumber", housenumber)
 	end
 
 	-- Set 'water'
