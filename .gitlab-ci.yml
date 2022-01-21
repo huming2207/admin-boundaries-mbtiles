@@ -9,7 +9,7 @@ gnaf:
   image: osgeo/gdal:alpine-small-latest
   artifacts:
     paths:
-      - "housenumber*.mbtiles.gz"
+      - "*.geojson.gz"
 
   variables:
     GIT_CHECKOUT: "true"
@@ -28,6 +28,20 @@ gnaf:
     - ls -lh
     - rm -rf G-NAF data.zip tmp
     - ls -lh
+    
+mbtiles:
+  stage: mbtiles
+  image: klokantech/tippecanoe
+  variables:
+    GIT_CHECKOUT: "true"
+  artifacts:
+    paths:
+      - "*.gz"
+      - "*/*.gz"
+      - "*/**/*.gz"
+  dependencies: 
+    - gnaf
+  script:
     - echo "Now packing MBTiles"
     - ls -lah
     - ./bin/generate_mbtiles_gnaf ACT
@@ -39,7 +53,6 @@ gnaf:
     - ./bin/generate_mbtiles_gnaf VIC
     - ./bin/generate_mbtiles_gnaf SA
     - ./bin/generate_mbtiles_gnaf WA
-  
 
 # release_tiles:
 #   stage: release
