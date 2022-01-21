@@ -130,7 +130,7 @@ jobs:
               gnaf.SA.mbtiles.gz
               gnaf.WA.mbtiles.gz
             tag_name: ${{github.event.inputs.tag}}
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          attempt_limit: 10
-          attempt_delay: 1000
+          attempt_limit: 3
+          attempt_delay: 2000
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
