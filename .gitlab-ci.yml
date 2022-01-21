@@ -9,6 +9,8 @@ prep:
   artifacts:
     paths:
       - "*.gz"
+      - */*.gz
+      - */**/*.gz
 
   variables:
     GIT_CHECKOUT: "true"
@@ -26,6 +28,7 @@ prep:
     - ./bin/gnafall
     - ls -lh
     - rm -rf G-NAF data.zip tmp
+    - ls -lh
     
 
 mbtiles:
@@ -36,6 +39,8 @@ mbtiles:
   artifacts:
     paths:
       - "*.gz"
+      - */*.gz
+      - */**/*.gz
   dependencies: 
     - prep
   script:
