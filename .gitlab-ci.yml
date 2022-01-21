@@ -8,6 +8,10 @@ prep:
   image: osgeo/gdal:alpine-small-latest
   artifacts:
     untracked: true
+    exclude:
+      - "data.zip"
+      - bin/
+      
   variables:
     GIT_CHECKOUT: "true"
   script:
