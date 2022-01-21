@@ -7,12 +7,8 @@ prep:
   stage: prep
   image: osgeo/gdal:alpine-small-latest
   artifacts:
-    untracked: true
-    exclude:
-      - "data.zip"
-      - bin/
-      - G-NAF/
-      - tmp/
+    paths:
+      - "*.gz"
 
   variables:
     GIT_CHECKOUT: "true"
@@ -30,17 +26,16 @@ prep:
     - ./bin/gnafall
     - ls -lh
     - rm -rf G-NAF data.zip tmp
+    
 
 mbtiles:
   stage: mbtiles
   image: klokantech/tippecanoe
+  variables:
+    GIT_CHECKOUT: "true"
   artifacts:
-    untracked: true
-    exclude:
-      - "data.zip"
-      - bin/
-      - G-NAF/
-      - tmp/
+    paths:
+      - "*.gz"
   dependencies: 
     - prep
   script:
