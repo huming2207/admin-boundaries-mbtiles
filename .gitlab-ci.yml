@@ -3,7 +3,7 @@ stages:
   - mbtiles
   # - release
 
-prepare:
+prep:
   stage: prep
   image: osgeo/gdal:alpine-small-latest
   artifacts:
@@ -24,7 +24,7 @@ prepare:
     - ./bin/gnafall
     - ls -lh
 
-pack_mbtiles:
+mbtiles:
   stage: mbtiles
   image: klokantech/tippecanoe
   artifacts:
