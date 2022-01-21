@@ -68,7 +68,7 @@ osm:prep:
     - mv water-polygons-split-4326 coastline
     - git clone https://github.com/systemed/tilemaker
     - cd tilemaker && make -j32 && make install && cd ..
-    - tilemaker --input australia-latest.osm.pbf --output osm.mbtiles --config /tilemaker-config.json --process /process-openmaptiles.lua
+    - tilemaker --input australia-latest.osm.pbf --output osm.mbtiles --config tilemaker-config.json --process process-openmaptiles.lua
 
 
 
