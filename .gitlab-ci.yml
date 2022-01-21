@@ -55,7 +55,7 @@ gnaf:mbtile:
 
 osm:prep:
   stage: prep
-  image: ubuntu-20.04
+  image: ubuntu:20.04
   artifacts:
     paths:
       - "*.mbtiles.gz"
