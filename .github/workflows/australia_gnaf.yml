@@ -100,15 +100,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            gnaf.ACT.geojson.gz
-            gnaf.NT.geojson.gz
-            gnaf.TAS.geojson.gz
-            gnaf.OT.geojson.gz
-            gnaf.NSW.geojson.gz
-            gnaf.QLD.geojson.gz
-            gnaf.VIC.geojson.gz
-            gnaf.SA.geojson.gz
-            gnaf.WA.geojson.gz
             gnaf.ACT.gpkg.gz
             gnaf.NT.gpkg.gz
             gnaf.TAS.gpkg.gz
@@ -118,15 +109,6 @@ jobs:
             gnaf.VIC.gpkg.gz
             gnaf.SA.gpkg.gz
             gnaf.WA.gpkg.gz
-            gnaf.ACT.mbtiles.gz
-            gnaf.NT.mbtiles.gz
-            gnaf.TAS.mbtiles.gz
-            gnaf.OT.mbtiles.gz
-            gnaf.NSW.mbtiles.gz
-            gnaf.QLD.mbtiles.gz
-            gnaf.VIC.mbtiles.gz
-            gnaf.SA.mbtiles.gz
-            gnaf.WA.mbtiles.gz
             housenumber.ACT.mbtiles.gz
             housenumber.NT.mbtiles.gz
             housenumber.TAS.mbtiles.gz
