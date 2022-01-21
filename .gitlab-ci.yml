@@ -61,7 +61,7 @@ osm:prep:
       - "*.mbtiles.gz"
   script:
     - DEBIAN_FRONTEND=noninteractive apt-get update
-    - DEBIAN_FRONTEND=noninteractive apt-get install -y git build-essential liblua5.1-0 liblua5.1-0-dev libprotobuf-dev libsqlite3-dev protobuf-compiler shapelib libshp-dev libboost-all-dev aria2
+    - DEBIAN_FRONTEND=noninteractive apt-get install -y zip unzip git build-essential liblua5.1-0 liblua5.1-0-dev libprotobuf-dev libsqlite3-dev protobuf-compiler shapelib libshp-dev libboost-all-dev aria2
     - aria2c -x16 -s100 --continue=true --auto-file-renaming=false https://download.geofabrik.de/australia-oceania/australia-latest.osm.pbf
     - aria2c -x16 -s100 --continue=true --auto-file-renaming=false https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
     - unzip water-polygons-split-4326.zip
