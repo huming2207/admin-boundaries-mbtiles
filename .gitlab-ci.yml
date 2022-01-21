@@ -1,0 +1,58 @@
+stages:
+  - prep
+  - mbtiles
+  # - release
+
+prepare:
+  stage: prep
+  image: osgeo/gdal:alpine-small-latest
+  artifacts:
+    untracked: true
+  variables:
+    GIT_CHECKOUT: "true"
+  script:
+    - echo "Downloading GNAF data from $GNAF_SRC_URL"
+    - echo "Later it will be released as $GNAF_RELEASE_TAG"
+    - apk add curl unzip sqlite
+    - mkdir tmp
+    - curl -L $GNAF_SRC_URL > data.zip
+    - unzip data.zip
+    - mv G-NAF/G-NAF*/Standard tmp/standard
+    - mv G-NAF/G-NAF*/Authority* tmp/authority
+    - echo "Converting SQLite DB files"
+    - ls -lh
+    - ./bin/gnafall
+    - ls -lh
+
+pack_mbtiles:
+  stage: mbtiles
+  image: klokantech/tippecanoe
+  artifacts:
+    untracked: true
+  dependencies: 
+    - prep
+  script:
+    - echo "Now packing MBTiles"
+    - ls -lah
+    - ./bin/generate_mbtiles_gnaf ACT
+    - ./bin/generate_mbtiles_gnaf NT
+    - ./bin/generate_mbtiles_gnaf TAS
+    - ./bin/generate_mbtiles_gnaf OT
+    - ./bin/generate_mbtiles_gnaf NSW
+    - ./bin/generate_mbtiles_gnaf QLD
+    - ./bin/generate_mbtiles_gnaf VIC
+    - ./bin/generate_mbtiles_gnaf SA
+    - ./bin/generate_mbtiles_gnaf WA
+
+# release_tiles:
+#   stage: release
+#   image: registry.gitlab.com/gitlab-org/release-cli:latest
+#   rules:
+#     - if: $CI_COMMIT_TAG
+#   script:
+#     - echo "Running release now!"
+#   release:
+#     name: 'Release $CI_COMMIT_TAG'
+#     tag_name: '$CI_COMMIT_TAG'
+#     ref: '$CI_COMMIT_TAG'
+#     description: 'Created using the release-cli $EXTRA_DESCRIPTION'
