@@ -95,6 +95,11 @@ jobs:
         with:
           name: ausgnaf-mbtiles
           path: gnaf.*.mbtiles.gz
+      - name: Archive housenumber layer mbtiles as artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ausgnaf-mbtiles
+          path: housenumber.*.mbtiles.gz
 
       - name: Release
         uses: softprops/action-gh-release@v1
