@@ -1,7 +1,7 @@
 #!/bin/sh
 gunzip -k gnaf.$1.geojson.gz
 gunzip -k housenumber.$1.geojson.gz
-tippecanoe -zg -ab -o gnaf.$1.mbtiles -l "housenumber" -n "Geocoded National Address File ($1)" -A "Incorporates or developed using G-NAF © Geoscape Australia licensed by the Commonwealth of Australia under the Open Geo-coded National Address File (G-NAF) End User Licence Agreement." -Z13 -z14 -pk -d --read-parallel gnaf.$1.geojson
+# tippecanoe -zg -ab -o gnaf.$1.mbtiles -l "housenumber" -n "Geocoded National Address File ($1)" -A "Incorporates or developed using G-NAF © Geoscape Australia licensed by the Commonwealth of Australia under the Open Geo-coded National Address File (G-NAF) End User Licence Agreement." -Z13 -z14 -pk -d --read-parallel gnaf.$1.geojson
 tippecanoe -zg -ab -o housenumber.$1.mbtiles -l "housenumber" -n "Geocoded National Address File ($1)" -A "Incorporates or developed using G-NAF © Geoscape Australia licensed by the Commonwealth of Australia under the Open Geo-coded National Address File (G-NAF) End User Licence Agreement." -Z14 -z14 -pk -d --read-parallel housenumber.$1.geojson --drop-fraction-as-needed
-gzip gnaf.$1.mbtiles
+# gzip gnaf.$1.mbtiles
 gzip housenumber.$1.mbtiles
