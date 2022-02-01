@@ -52,8 +52,13 @@ jobs:
     - name: Archive street number CSV as artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: streetnumber-csv
-        path: housenumber.*.csv.gz      
+        name: housenumber-csv
+        path: housenumber.*.csv.gz 
+    - name: Archive street number GeoJSON as artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: housenumber-geojson
+        path: housenumber.*.geojson.gz         
   mbtiles:
     runs-on: ubuntu-latest
     container: klokantech/tippecanoe
@@ -74,6 +79,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: ausgnaf-gpkg
+      - name: Download street number GeoJSON from artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: housenumber-geojson
       - name: Generate mbtiles
         id: download
         env:
