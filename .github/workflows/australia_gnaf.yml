@@ -5,11 +5,11 @@ on:
       url:
         description: 'URL to GNAF data'
         required: true
-        default: 'https://data.gov.au/data/dataset/19432f89-dc3a-4ef3-b943-5326ef1dbecc/resource/4b084096-65e4-4c8e-abbe-5e54ff85f42f/download/may21_gnaf_pipeseparatedvalue.zip'
+        default: 'https://data.gov.au/data/dataset/19432f89-dc3a-4ef3-b943-5326ef1dbecc/resource/4b084096-65e4-4c8e-abbe-5e54ff85f42f/download/g-naf_nov21_australia_gda94_psv_104.zip'
       tag:
         description: 'Release tag'
         required: true
-        default: 'GNAF-2021-05-acttest'
+        default: 'GNAF-2021-11'
 
 jobs:
   checkout_dl:
@@ -107,10 +107,10 @@ jobs:
       - name: Archive housenumber layer mbtiles as artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: ausgnaf-mbtiles
+          name: housenumber-mbtiles
           path: housenumber.*.mbtiles.gz
 
-      - name: Release
+      - name: Release #1
         uses: softprops/action-gh-release@v1
         with:
           files: |
@@ -119,6 +119,11 @@ jobs:
             housenumber.TAS.mbtiles.gz
             housenumber.OT.mbtiles.gz
             housenumber.NSW.mbtiles.gz
+          tag_name: ${{github.event.inputs.tag}}
+      - name: Release #2
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
             housenumber.QLD.mbtiles.gz
             housenumber.VIC.mbtiles.gz
             housenumber.SA.mbtiles.gz
