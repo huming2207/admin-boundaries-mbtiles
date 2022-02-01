@@ -56,7 +56,7 @@ jobs:
         path: housenumber.*.geojson.gz         
   mbtiles:
     runs-on: ubuntu-latest
-    container: dorinoltean/tippecanoe
+    container: dorinoltean/tippecanoe:1.36.0
     needs:
       - checkout_dl
     steps:
@@ -101,7 +101,7 @@ jobs:
           name: housenumber-mbtiles
           path: housenumber.*.mbtiles.gz
 
-      - name: Release #1
+      - name: Release Part 1
         uses: softprops/action-gh-release@v1
         with:
           files: |
@@ -111,7 +111,7 @@ jobs:
             housenumber.OT.mbtiles.gz
             housenumber.NSW.mbtiles.gz
           tag_name: ${{github.event.inputs.tag}}
-      - name: Release #2
+      - name: Release Part 2
         uses: softprops/action-gh-release@v1
         with:
           files: |
