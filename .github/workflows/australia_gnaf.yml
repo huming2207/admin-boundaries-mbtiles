@@ -100,15 +100,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            gnaf.ACT.gpkg.gz
-            gnaf.NT.gpkg.gz
-            gnaf.TAS.gpkg.gz
-            gnaf.OT.gpkg.gz
-            gnaf.NSW.gpkg.gz
-            gnaf.QLD.gpkg.gz
-            gnaf.VIC.gpkg.gz
-            gnaf.SA.gpkg.gz
-            gnaf.WA.gpkg.gz
             housenumber.ACT.mbtiles.gz
             housenumber.NT.mbtiles.gz
             housenumber.TAS.mbtiles.gz
