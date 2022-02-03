@@ -1,4 +1,6 @@
 #!/bin/sh
+# Some magic here
+export OGR_SQLITE_CACHE=768
 echo "Generating GNAF sqlite3 database ($1)"
 cat sql/gnaf/create_tables.sql | sqlite3 gnaf.$1.sqlite
 echo "Table generation complete ($1)"
