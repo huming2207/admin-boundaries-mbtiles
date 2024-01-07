@@ -5,7 +5,7 @@ on:
       url:
         description: 'URL to GNAF data'
         required: true
-        default: 'https://data.gov.au/data/dataset/19432f89-dc3a-4ef3-b943-5326ef1dbecc/resource/4b084096-65e4-4c8e-abbe-5e54ff85f42f/download/g-naf_nov21_australia_gda94_psv_104.zip'
+        default: 'https://data.gov.au/data/dataset/19432f89-dc3a-4ef3-b943-5326ef1dbecc/resource/aa37876e-2974-46d2-aa8e-e8e2c7116b79/download/g-naf_nov23_allstates_gda94_psv_1013.zip'
       tag:
         description: 'Release tag'
         required: true
