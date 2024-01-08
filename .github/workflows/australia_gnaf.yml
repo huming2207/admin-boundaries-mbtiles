@@ -9,7 +9,7 @@ on:
       tag:
         description: 'Release tag'
         required: true
-        default: 'GNAF-2021-11'
+        default: 'GNAF-2023-11'
 
 jobs:
   checkout_dl:
@@ -121,5 +121,28 @@ jobs:
             housenumber.SA.mbtiles.gz
             housenumber.WA.mbtiles.gz
           tag_name: ${{github.event.inputs.tag}}
+      - name: Release Part 3
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            housenumber.QLD.geojson.gz
+            housenumber.VIC.geojson.gz
+            housenumber.SA.geojson.gz
+            housenumber.WA.geojson.gz
+          tag_name: ${{github.event.inputs.tag}}
+      - name: Release Part 4
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            housenumber.ACT.geojson.gz
+            housenumber.NT.geojson.gz
+            housenumber.TAS.geojson.gz
+          tag_name: ${{github.event.inputs.tag}}
+      - name: Release Part 5
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            housenumber.OT.geojson.gz
+            housenumber.NSW.geojson.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
